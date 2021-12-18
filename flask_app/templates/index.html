@@ -14,7 +14,7 @@
             {% with messages = get_flashed_messages(category_filter=['register']) %}
                 {% if messages %}
                 <div class="alert alert-danger" role="alert">
-                    <strong>Oopsy Poopsy!!!!</strong>
+                    <strong>Oopsy Poopsy!</strong>
                         {% for message in messages %}
                         <p>{{message}}</p>
                         {% endfor %}
@@ -63,7 +63,6 @@
                 <label for="password">Password:</label>
                 <input type="password" name="password" class="form-control">
             </div>
-            
             <input type="submit" value="Login" class="btn btn-success">
         </form>
     </div>

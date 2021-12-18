@@ -17,17 +17,17 @@ class User:
     @classmethod
     def create(cls, data):
         query = "INSERT INTO users (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
-        return connectToMySQL('login_registration').query_db(query, data)
+        return connectToMySQL('recipes').query_db(query, data)
 
     @classmethod
     def getById(cls, data):
         query  = "SELECT * FROM users WHERE id = %(id)s"
-        return cls((connectToMySQL('login_registration').query_db(query, data))[0])
+        return cls((connectToMySQL('recipes').query_db(query, data))[0])
 
     @classmethod
     def getByEmail(cls, data):
         query  = "SELECT * FROM users WHERE email = %(email)s;"
-        resultSet = (connectToMySQL('login_registration').query_db(query, data))
+        resultSet = (connectToMySQL('recipes').query_db(query, data))
         if len(resultSet) > 0:
             return cls(resultSet[0])
         return False
@@ -40,7 +40,7 @@ class User:
         minPassword = 3
 
         query = "SELECT * FROM users WHERE email = %(email)s;"
-        results = connectToMySQL('login_registration').query_db(query, user)
+        results = connectToMySQL('recipes').query_db(query, user)
         if len(results) >= 1:
             flash("Email already taken.","register")
             isValid = False
